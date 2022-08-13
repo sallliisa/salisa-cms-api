@@ -7,7 +7,11 @@ import articleRoutes from "./routes/Article";
 
 const router = express();
 mongoose
-  .connect(config.mongo.uri)
+  .connect(config.mongo.uri, {
+    dbName: config.mongo.dbname,
+    user: config.mongo.username,
+    pass: config.mongo.password,
+  })
   .then(() => {
     Logging.info("Connected to MongoDB"), StartServer();
   })
