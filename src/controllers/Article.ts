@@ -69,7 +69,7 @@ const editArticle = async (req: Request, res: Response, next: NextFunction) => {
   const articleId = req.params.articleId;
   const { title, date, content } = req.body;
   try {
-    const result = await Article.findByIdAndUpdate(articleId, {
+    await Article.findByIdAndUpdate(articleId, {
       title,
       date,
       content,
